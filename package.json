@@ -1,0 +1,22 @@
+{
+  "name": "dnsresolver",
+  "version": "1.0.0",
+  "description": "does resolve dns and provide the outcome as json via http",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cpinotossi/dnsresolver.git"
+  },
+  "author": "Christian Pino Tossi <cpinotossi@web.de> (http://edgegate.de)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cpinotossi/dnsresolver/issues"
+  },
+  "homepage": "https://github.com/cpinotossi/dnsresolver#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
