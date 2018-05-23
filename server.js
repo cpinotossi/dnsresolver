@@ -2,7 +2,6 @@
  * Module dependencies.
  */
 const express = require('express')
-var lookup = require('dns-lookup');
 const dns = require('dns');
 //var bodyParser = require('body-parser');
 //var multer = require('multer'); // v1.0.5
@@ -19,7 +18,7 @@ const app = express()
 app.get('/*', (req, res) => {
   var domain = req.url.substring(1);
   var response = "";
-  if(!domain === "favicon.ico"){
+  if(domain != "favicon.ico"){
     dns.resolve4(domain, (err, addresses) => {
       if (err) throw err;
       //console.log(`addresses: ${JSON.stringify(addresses)}`);
@@ -32,10 +31,10 @@ app.get('/*', (req, res) => {
           console.log(response);
         });
       });
-  }
+    });
+  };
   res.send(response);
   });
-})
 
 //Http support
 var http = require("http");
