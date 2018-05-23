@@ -29,11 +29,13 @@ app.get('/*', (req, res) => {
           }
           response += `${a}\t${JSON.stringify(hostnames)}\n`;
           console.log(response);
+          res.send(response);
         });
       });
     });
-  };
-  res.send(response);
+  } else{
+    res.send(response);
+  }
   });
 
 //Http support
