@@ -27,11 +27,13 @@ app.get('/*', (req, res) => {
         addresses.forEach((a) => {
           dns.reverse(a, (err, hostnames) => {
             if (err) {
-              throw err;
+              console.log(err);
+              res.send(a);
+            } else{
+              response += `${a}\t${JSON.stringify(hostnames)}\n`;
+              console.log(response);
+              res.send(response);
             }
-            response += `${a}\t${JSON.stringify(hostnames)}\n`;
-            console.log(response);
-            res.send(response);
           });
         });
       }
