@@ -19,19 +19,21 @@ const app = express()
 app.get('/*', (req, res) => {
   var domain = req.url.substring(1);
   var response = "";
-  dns.resolve4(domain, (err, addresses) => {
-    if (err) throw err;
-    //console.log(`addresses: ${JSON.stringify(addresses)}`);
-    addresses.forEach((a) => {
-      dns.reverse(a, (err, hostnames) => {
-        if (err) {
-          throw err;
-        }
-        response += `${a}\t${JSON.stringify(hostnames)}\n`;
-        console.log(response);
+  if(!domain === "favicon.ico"){
+    dns.resolve4(domain, (err, addresses) => {
+      if (err) throw err;
+      //console.log(`addresses: ${JSON.stringify(addresses)}`);
+      addresses.forEach((a) => {
+        dns.reverse(a, (err, hostnames) => {
+          if (err) {
+            throw err;
+          }
+          response += `${a}\t${JSON.stringify(hostnames)}\n`;
+          console.log(response);
+        });
       });
-    });
-    res.send(response);
+  }
+  res.send(response);
   });
 })
 
